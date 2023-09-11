@@ -1,13 +1,64 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterView } from 'vue-router'
+
 const active = ref(0)
+const tablist = [
+  {
+    name: '附近',
+    path: '/nearby',
+    icon: {
+      active: 'icon-fujin-copy',
+      inactive: 'icon-fujin'
+    }
+  },
+  {
+    name: '约伴',
+    path: '/chat',
+    icon: {
+      active: 'icon-duoren-copy',
+      inactive: 'icon-duoren'
+    }
+  },
+  {
+    name: '消息',
+    path: '/message',
+    icon: {
+      active: 'icon-shouye-copy',
+      inactive: 'icon-shouye'
+    }
+  },
+  {
+    name: '去旅行',
+    path: '/trip',
+    icon: {
+      active: 'icon-xingqiu-copy',
+      inactive: 'icon-xingqiu'
+    }
+  },
+  {
+    name: '我的',
+    path: '/me',
+    icon: {
+      active: 'icon-wode-wodefensi-copy',
+      inactive: 'icon-wode-wodefensi'
+    }
+  }
+]
 </script>
+
 <template>
-  <van-tabbar v-model="active">
-    <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-    <van-tabbar-item icon="search">标签</van-tabbar-item>
-    <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-    <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+  <RouterView />
+  <van-tabbar v-model="active" active-color="#1296db" route>
+    <van-tabbar-item v-for="item in tablist" replace :to="item.path">
+      <span>{{ item.name }}</span>
+      <template #icon="props">
+        <svg class="icon" aria-hidden="true">
+          <use :xlink:href="`#${props.active ? item.icon.active : item.icon.inactive}`"></use>
+        </svg>
+      </template>
+    </van-tabbar-item>
   </van-tabbar>
 </template>
+
 <style scoped></style>

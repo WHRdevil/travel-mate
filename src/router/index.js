@@ -52,13 +52,13 @@ const router = createRouter({
         {
           path: 'me',
           component: () => import('../views/UserView.vue')
-        },
-        {
-          path: 'body',
-          name: 'message_body',
-          component: () => import('../views/MessageView/MessageBody.vue')
         }
       ]
+    },
+    {
+      path: '/body',
+      name: 'message_body',
+      component: () => import('../views/MessageView/MessageBody.vue')
     }
   ]
 })

@@ -4,6 +4,20 @@ import PeopleCard from '../../components/PeopleCard.vue'
 
 <template>
     <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
+    <PeopleCard />
 </template>
 
 <style scoped></style>

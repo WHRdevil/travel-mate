@@ -1,6 +1,6 @@
 <script setup>
 import UserTag from './UserTag.vue'
-import UserPlan from './UserPlan.vue';
+import UserPlan from './UserPlan.vue'
 </script>
 
 <template>
@@ -31,7 +31,7 @@ import UserPlan from './UserPlan.vue';
 <style scoped>
 .people-card {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .user-avatar {
@@ -46,7 +46,7 @@ import UserPlan from './UserPlan.vue';
 .user-info {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
 }
 
 .info-head {
@@ -70,5 +70,10 @@ import UserPlan from './UserPlan.vue';
 
 .info-foot {
   display: flex;
+  width: 100%;
+}
+
+.info-foot .plan {
+  margin-right: 4px;
 }
 </style>

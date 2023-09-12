@@ -29,7 +29,7 @@ const typeComponent = {
 </script>
 
 <template>
-  <van-tabs v-model:active="active" shrink animated line-width="0px" line-height="0px">
+  <van-tabs v-model:active="active" shrink animated line-width="0px" line-height="0px" sticky>
     <template #nav-right>
       <div class="right-btn">
         <van-button v-if="route.path.includes('dynamic')" class="submit" round>发布</van-button>

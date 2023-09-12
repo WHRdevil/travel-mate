@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import DynamicPost from '../../components/DynamicPost.vue'
+</script>
 
 <template>
-    111
+  <DynamicPost />
 </template>
 
 <style scoped></style>

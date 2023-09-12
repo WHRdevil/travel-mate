@@ -36,7 +36,14 @@ const router = createRouter({
         },
         {
           path: 'message',
-          component: () => import('../views/MessageView.vue')
+          component: () => import('../views/MessageView/index.vue'),
+          children: [
+            {
+              path: 'message',
+              name: 'message',
+              component: () => import('../views/MessageView/MessageView.vue')
+            }
+          ]
         },
         {
           path: 'trip',
@@ -45,6 +52,11 @@ const router = createRouter({
         {
           path: 'me',
           component: () => import('../views/UserView.vue')
+        },
+        {
+          path: 'body',
+          name: 'message_body',
+          component: () => import('../views/MessageView/MessageBody.vue')
         }
       ]
     }

@@ -9,3 +9,7 @@ body {
   fill: currentColor;
   overflow: hidden;
 }
+
+.container {
+  margin: 0 16px;
+}

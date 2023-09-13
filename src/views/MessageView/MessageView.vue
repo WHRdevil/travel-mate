@@ -1,3 +1,9 @@
+<script setup>
+import MessageCard from '../../components/MessageCard.vue'
+</script>
+
 <template>
-  <RouterLink to="/body">to message</RouterLink>
+  <MessageCard />
 </template>
+
+<style scoped></style>

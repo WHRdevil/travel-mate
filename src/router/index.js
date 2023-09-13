@@ -32,7 +32,7 @@ const router = createRouter({
         },
         {
           path: 'chat',
-          component: () => import('../views/ChatView.vue')
+          component: () => import('../views/ChatView/index.vue')
         },
         {
           path: 'message',

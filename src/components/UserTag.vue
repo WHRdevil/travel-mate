@@ -3,7 +3,12 @@ defineProps(['type'])
 </script>
 
 <template>
-  <div :class="`tag ${type}`">{{ type == 'male' ? '♂' : type == 'female' ? '♀' : '' }}<slot></slot></div>
+  <div :class="`tag ${type}`">
+    <svg v-if="type == 'male' || type == 'female'">
+      <use :xlink:href="`#icon-${type == 'male' ? 'nan' : type == 'female' ? 'nv' : ''}`"></use>
+    </svg>
+    <slot></slot>
+  </div>
 </template>
 
 <style scoped>
@@ -14,6 +19,13 @@ defineProps(['type'])
   padding: 3px 8px;
   border-radius: 24px;
   margin-right: 16px;
+  text-align: center;
+}
+
+.tag svg {
+  width: 12px;
+  height: 12px;
+  margin-right: 2px;
 }
 
 .male,

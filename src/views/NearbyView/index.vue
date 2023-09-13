@@ -91,9 +91,6 @@ const typeComponent = {
 </template>
 
 <style scoped>
-.container {
-  margin: 0 16px;
-}
 
 .right-btn {
   align-self: center;

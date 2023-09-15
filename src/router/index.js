@@ -7,6 +7,9 @@ const router = createRouter({
     {
       path: '/',
       component: HomeView,
+      meta: {
+        requireAuth: true
+      },
       redirect: {
         name: 'people'
       }, // default page
@@ -58,9 +61,38 @@ const router = createRouter({
     {
       path: '/body',
       name: 'message_body',
+      meta: {
+        requireAuth: true
+      },
       component: () => import('../views/MessageView/MessageBody.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/AuthView.vue')
+      // beforeEnter: (to, from) => {}
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/RegisterView.vue')
+      // beforeEnter: (to, from) => {}
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    if (localStorage.getItem('token')) {
+      next()
+    } else {
+      next({
+        name: 'login'
+      })
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

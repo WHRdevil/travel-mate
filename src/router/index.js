@@ -77,6 +77,11 @@ const router = createRouter({
       name: 'register',
       component: () => import('../views/RegisterView.vue')
       // beforeEnter: (to, from) => {}
+    },
+    {
+      path: '/setting',
+      name: 'setting',
+      component: () => import('../views/SettingView.vue')
     }
   ]
 })

@@ -7,9 +7,9 @@ const serviceAxios = axios.create({
 
 serviceAxios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('JWToken')
+    const token = localStorage.getItem('token')
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`
+      config.headers.Authorization = `${token}`
     }
     if (!config.headers['Content-Type']) {
       config.headers['Content-Type'] = 'application/json'

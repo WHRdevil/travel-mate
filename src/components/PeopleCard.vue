@@ -1,26 +1,28 @@
 <script setup>
 import UserTag from './UserTag.vue'
 import UserPlan from './UserPlan.vue'
+import { timeAgo, getAge } from '../utils/utils'
+
+defineProps(['account', 'create_time', 'sex', 'home', 'pic', 'birthday'])
 </script>
 
 <template>
   <div>
     <div class="people-card">
       <div class="user-avatar">
-        <img src="https://avatars.githubusercontent.com/u/16703019?v=4" alt="" />
+        <img :src="pic" alt="" />
       </div>
       <div class="user-info">
         <div class="info-head">
-          <div class="name">lonzzi</div>
-          <div class="date">1天前 716m</div>
+          <div class="name">{{ account }}</div>
+          <div class="date">{{ timeAgo(Date.parse(create_time)) }}</div>
         </div>
         <div class="info-body">
-          <UserTag type="male">21</UserTag>
-          <UserTag type="green">1城</UserTag>
+          <UserTag :type="sex == 1 ? 'male' : 'female'">{{ getAge(Date.parse(birthday)) }}</UserTag>
+          <!-- <UserTag type="green">1城</UserTag> -->
         </div>
         <div class="info-foot">
-          <UserPlan title="计划">南昌</UserPlan>
-          <UserPlan title="计划">南昌</UserPlan>
+          <UserPlan title="计划">{{ home }}</UserPlan>
         </div>
       </div>
     </div>

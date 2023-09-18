@@ -49,7 +49,7 @@ const tablist = [
 
 <template>
   <RouterView />
-  <van-tabbar v-model="active" active-color="#1296db" route>
+  <van-tabbar class="tabbar" v-model="active" active-color="#1296db" route>
     <van-tabbar-item v-for="item in tablist" replace :to="item.path">
       <span>{{ item.name }}</span>
       <template #icon="props">
@@ -61,4 +61,12 @@ const tablist = [
   </van-tabbar>
 </template>
 
-<style scoped></style>
+<style scoped>
+.tabbar {
+  max-width: 762px;
+  min-width: 320px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+</style>

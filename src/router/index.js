@@ -81,7 +81,49 @@ const router = createRouter({
     {
       path: '/setting',
       name: 'setting',
-      component: () => import('../views/SettingView.vue')
+      meta: {
+        requireAuth: true
+      },
+      component: () => import('../views/SettingView/index.vue')
+    },
+    {
+      path: '/setting/server',
+      name: 'server',
+      meta: {
+        requireAuth: true
+      },
+      component: () => import('../views/SettingView/ServerView.vue')
+    },
+    {
+      path: '/setting/about',
+      name: 'about',
+      meta: {
+        requireAuth: true
+      },
+      component: () => import('../views/SettingView/AboutView.vue')
+    },
+    {
+      path: '/setting/purview',
+      name: 'purview',
+      meta: {
+        requireAuth: true
+      },
+      component: () => import('../views/SettingView/PurviewView.vue')
+    },
+    {
+      path: '/personal',
+      name: 'personal',
+      component: () => import('../views/PersonalView.vue')
+    },
+    {
+      path: '/hotel',
+      name: 'hotel',
+      component: () => import('../views/HotelView.vue')
+    },
+    {
+      path: '/plan',
+      name: 'plan',
+      component: () => import('../views/PlanView.vue')
     }
   ]
 })

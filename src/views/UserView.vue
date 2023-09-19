@@ -69,25 +69,19 @@ onMounted(() => {
     </div>
     <div class="center">
       <div class="row1">
-        <div class="icon">
+        <RouterLink class="icon" :to="{ name: 'personal' }">
           <img v-if="userInfo.pic" :src="userInfo.pic" alt="" />
           <svg v-else>
             <use xlink:href="#icon-touxiang"></use>
           </svg>
-        </div>
+        </RouterLink>
         <div class="text">
           <span class="name">{{ userInfo.account }}</span>
-          <span class="id"
-            >ID:<span>{{ userInfo.admin_id }}</span></span
-          >
+          <span class="id">ID:<span>{{ userInfo.admin_id }}</span></span>
           <div class="content">
             <span class="con">好友:<span>0</span></span>
-            <span class="con"
-              >粉丝:<span>{{ userInfo.followers }}</span></span
-            >
-            <span class="con"
-              >关注:<span>{{ userInfo.following }}</span></span
-            >
+            <span class="con">粉丝:<span>{{ userInfo.followers }}</span></span>
+            <span class="con">关注:<span>{{ userInfo.following }}</span></span>
             <span class="con">小队:<span>0</span></span>
           </div>
         </div>

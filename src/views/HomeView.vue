@@ -64,7 +64,7 @@ const tablist = [
 <style scoped>
 .tabbar {
   max-width: 762px;
-  min-width: 320px;
+  min-width: 160px;
   margin: 0 auto;
   left: 0;
   right: 0;

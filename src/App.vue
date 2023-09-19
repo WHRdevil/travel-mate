@@ -10,7 +10,7 @@ import { RouterView } from 'vue-router'
 
 <style scoped>
 .container {
-  min-width: 320px;
+  min-width: 160px;
   max-width: 762px;
   margin: 0 auto;
 }

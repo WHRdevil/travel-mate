@@ -69,7 +69,7 @@ onMounted(() => {
     </div>
     <div class="center">
       <div class="row1">
-        <RouterLink class="icon" :to="{ name: 'personal' }">
+        <RouterLink class="icon avatar" :to="{ name: 'personal', query: { id: userInfo.admin_id } }">
           <img v-if="userInfo.pic" :src="userInfo.pic" alt="" />
           <svg v-else>
             <use xlink:href="#icon-touxiang"></use>
@@ -77,22 +77,30 @@ onMounted(() => {
         </RouterLink>
         <div class="text">
           <span class="name">{{ userInfo.account }}</span>
-          <span class="id">ID:<span>{{ userInfo.admin_id }}</span></span>
+          <span class="id"
+            >ID:<span>{{ userInfo.admin_id }}</span></span
+          >
           <div class="content">
             <span class="con">好友:<span>0</span></span>
-            <span class="con">粉丝:<span>{{ userInfo.followers }}</span></span>
-            <span class="con">关注:<span>{{ userInfo.following }}</span></span>
+            <span class="con"
+              >粉丝:<span>{{ userInfo.followers }}</span></span
+            >
+            <span class="con"
+              >关注:<span>{{ userInfo.following }}</span></span
+            >
             <span class="con">小队:<span>0</span></span>
           </div>
         </div>
       </div>
       <div class="row2">
-        <div>
-          <svg>
-            <use xlink:href="#icon-gangbi"></use>
-          </svg>
-          <span>修改资料</span>
-        </div>
+        <RouterLink :to="{ name: 'revise' }">
+          <div>
+            <svg>
+              <use xlink:href="#icon-gangbi"></use>
+            </svg>
+            <span>修改资料</span>
+          </div>
+        </RouterLink>
         <div>
           <svg>
             <use xlink:href="#icon-qianbao"></use>
@@ -158,6 +166,17 @@ onMounted(() => {
   margin: 10px 10px 0;
 }
 
+.body .center .avatar {
+  width: 56px;
+  height: 56px;
+}
+
+.center .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
 .icon span {
   color: white;
 }
@@ -206,6 +225,10 @@ onMounted(() => {
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
+}
+
+.row2 a {
+  color: black;
 }
 
 .row2 div {

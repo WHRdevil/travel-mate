@@ -2,6 +2,30 @@
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import PostView from './PostView.vue'
+import { getRandPost } from '../../http/api/postApi'
+import { getUserInfoById } from '../../http/api/userApi'
+
+const posts = ref([])
+onMounted(() => {
+  getRandPost(10)
+    .then((value) => {
+      // console.log(value)
+      if (value.code == 1) {
+        posts.value = value.data
+        for (let i in posts.value) {
+          getUserInfoById(posts.value[i].admin_id).then((user) => {
+            if (user.code == 1) {
+              // console.log(user.data)
+              posts.value[i].user = user.data
+            }
+          })
+        }
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
 const router = useRouter()
 
@@ -27,7 +51,7 @@ const onClick = (index) => {
 }
 
 const onSubmit = () => {
-  router.push({ name: 'plan' })
+  router.push({ name: 'publish' })
 }
 
 const tablist = [
@@ -60,7 +84,7 @@ const typeComponent = {
   <div>
     <div class="head">
       <van-search v-model="value" class="search" shape="round" placeholder="热门目的地，计划" left-icon="" />
-        <van-button class="submit" @click="onSubmit" round>发布</van-button>
+      <van-button class="submit" @click="onSubmit" round>发布</van-button>
     </div>
     <div class="swipe-wrap">
       <div class="bg">
@@ -89,8 +113,7 @@ const typeComponent = {
       <template #nav-right> </template>
       <van-tab class="tab" v-for="item in tablist" :title="item.name">
         <div class="content">
-          <PostView />
-          <!-- <component :is="typeComponent[item.path]"></component>  -->
+          <PostView :posts="posts" />
         </div>
       </van-tab>
     </van-tabs>

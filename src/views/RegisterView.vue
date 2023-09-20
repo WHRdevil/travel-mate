@@ -100,7 +100,7 @@ const comparePassword = () => {
         :rules="[{ required: true, message: '请输入昵称' }]"
       />
 
-      <van-field v-model="result" is-link name="datePicker" placeholder="点击选择时间" @click="showPicker = true" />
+      <van-field v-model="result" is-link name="datePicker" placeholder="点击选择出生日期" @click="showPicker = true" />
       <van-popup v-model:show="showPicker" position="bottom">
         <van-date-picker
           @confirm="onConfirm"

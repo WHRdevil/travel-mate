@@ -31,6 +31,8 @@ const item = reactive({
   gridItemContentPadding: 0
 })
 
+const alreadyClick = ref(false)
+
 const followUser = () => {
   const self_id = localStorage.getItem('id')
   console.log(self_id)
@@ -39,6 +41,8 @@ const followUser = () => {
   } else {
     followById(route.query.id).then((value) => {
       console.log(value)
+      alreadyClick.value = true
+      userInfo.value.followers = userInfo.value.followers + 1
     })
   }
 }
@@ -50,7 +54,11 @@ const followUser = () => {
       <van-nav-bar left-arrow @click-left="onClickLeft" />
     </van-config-provider>
   </van-sticky>
-  <van-image v-if="userInfo.pic" :src="userInfo.pic.indexOf('http') == -1 ? BASE_URL + '/' + userInfo.pic : userInfo.pic" fit="cover" />
+  <van-image
+    v-if="userInfo.pic"
+    :src="userInfo.pic.indexOf('http') == -1 ? BASE_URL + '/' + userInfo.pic : userInfo.pic"
+    fit="cover"
+  />
   <div class="box">
     <span class="name">{{ userInfo.account }}</span>
     <div class="affect">
@@ -84,18 +92,18 @@ const followUser = () => {
       </van-grid-item>
       <van-grid-item :theme-vars="item">
         <p>
-          职业:<span>{{ 5 }}</span>
+          职业:<span>{{ userInfo.job }}</span>
         </p>
       </van-grid-item>
       <van-grid-item :theme-vars="item">
         <p>
-          情感:<span>{{ 6 }}</span>
+          情感:<span>{{ userInfo.emotion }}</span>
         </p>
       </van-grid-item>
     </van-grid>
   </van-config-provider>
 
-  <button @click="followUser">关注</button>
+  <button :class="alreadyClick ? 'followed' : ''" @click="followUser">{{ alreadyClick ? '已关注' : '关注' }}</button>
 </template>
 
 <style scoped>
@@ -149,12 +157,16 @@ const followUser = () => {
 }
 
 button {
-  width: 60px;
+  /* width: 60px; */
   height: 30px;
   color: white;
   background-color: #d61b78;
   border: 1px solid white;
   border-radius: 25px;
   margin: 0 15px;
+}
+
+.followed {
+  background-color: gray;
 }
 </style>

@@ -87,12 +87,14 @@ onMounted(() => {
         </div>
       </div>
       <div class="row2">
-        <div>
-          <svg>
-            <use xlink:href="#icon-gangbi"></use>
-          </svg>
-          <span>修改资料</span>
-        </div>
+        <RouterLink :to="{ name: 'revise' }">
+          <div>
+            <svg>
+              <use xlink:href="#icon-gangbi"></use>
+            </svg>
+            <span>修改资料</span>
+          </div>
+        </RouterLink>
         <div>
           <svg>
             <use xlink:href="#icon-qianbao"></use>
@@ -206,6 +208,10 @@ onMounted(() => {
   margin-top: 20px;
   display: flex;
   justify-content: space-around;
+}
+
+.row2 a {
+  color: black;
 }
 
 .row2 div {

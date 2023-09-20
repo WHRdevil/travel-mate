@@ -23,3 +23,5 @@ export const getAge = (birthTimestamp) => {
 
   return age
 }
+
+export const BASE_URL = 'http://localhost:8890'

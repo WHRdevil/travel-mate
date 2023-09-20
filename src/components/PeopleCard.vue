@@ -43,6 +43,7 @@ defineProps(['account', 'create_time', 'sex', 'home', 'pic', 'birthday'])
 .user-avatar img {
   border-radius: 100%;
   width: 60px;
+  height: 60px;
 }
 
 .user-info {

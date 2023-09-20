@@ -121,10 +121,20 @@ const router = createRouter({
       component: () => import('../views/HotelView.vue')
     },
     {
-      path: '/plan',
-      name: 'plan',
-      component: () => import('../views/PlanView.vue')
-    }
+      path: '/publish',
+      name: 'publish',
+      component: () => import('../views/PublishView.vue')
+    },
+    {
+      path: '/showplan',
+      name: 'showplan',
+      component: () => import('../views/ShowplanView.vue')
+    },
+    {
+      path: '/revise',
+      name: 'revise',
+      component: () => import('../views/ReviseView.vue')
+    },
   ]
 })
 

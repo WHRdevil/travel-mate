@@ -1,50 +1,73 @@
 <script setup>
 import { ref } from 'vue'
 import UserTag from './UserTag.vue'
+import { getAge, timeAgo } from '../utils/utils'
+import { BASE_URL } from '../utils/utils'
+
+defineProps(['post'])
 
 const text = ref('乌鲁木齐出发，自驾北疆环线，自驾北疆环线，自驾北疆环线，自驾北疆环线，自驾北疆环线，自驾北疆环线，')
 </script>
 
 <template>
-  <div class="post-card">
+  <div class="post-card" v-if="post.user">
     <div class="post-head">
       <div class="avatar">
         <img src="https://avatars.githubusercontent.com/u/16703019?v=4" alt="" />
       </div>
       <div class="user-info">
-        <span class="name">lonzzi</span>
+        <span class="name">{{ post.user.account }}</span>
         <span class="tag">
-          <UserTag type="male">39</UserTag>
+          <UserTag :type="post.user.sex == 1 ? 'male' : 'female'">{{ getAge(new Date(post.user.birthday)) }}</UserTag>
         </span>
       </div>
-      <div class="date">1个小时前</div>
+      <div class="date">{{ timeAgo(new Date(post.user.create_time)) }}</div>
     </div>
     <div class="post-body">
-      <div class="title">9月新疆赏秋环线组队</div>
+      <div class="title">{{ post.title }}</div>
       <div class="desc">
-        <van-text-ellipsis rows="2" :content="text" />
+        <van-text-ellipsis rows="2" :content="post.content" />
       </div>
       <div class="departure">
         <svg>
           <use xlink:href="#icon-wxbdingwei"></use>
         </svg>
-        <span>出发地 乌鲁木齐</span>
+        <span>出发地 {{ post.start }}</span>
       </div>
       <div class="destination">
         <svg>
           <use xlink:href="#icon-mudedi"></use>
         </svg>
-        <span>目的地 伊犁</span>
+        <span>目的地 {{ post.end }}</span>
       </div>
       <div class="date">
         <svg>
           <use xlink:href="#icon-mudedi"></use>
         </svg>
-        <span>起止时间 2023-9-25 至 2023-10-07</span>
+        <span
+          >起止时间
+          {{
+            new Date(post.start_time).getFullYear() +
+            '-' +
+            new Date(post.start_time).getMonth() +
+            '-' +
+            new Date(post.start_time).getDay()
+          }}
+          至
+          {{
+            new Date(post.end_time).getFullYear() +
+            '-' +
+            new Date(post.end_time).getMonth() +
+            '-' +
+            new Date(post.end_time).getDay()
+          }}</span
+        >
       </div>
       <div class="pic">
         <van-grid :column-num="3">
-          <van-grid-item v-for="value in 6" :key="value" icon="photo-o" text="文字" />
+          <van-grid-item v-for="value in JSON.parse(post.pic)" :key="value">
+            <van-image :src="BASE_URL + '/' + value" />
+          </van-grid-item>
         </van-grid>
       </div>
     </div>

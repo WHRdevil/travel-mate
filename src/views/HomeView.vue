@@ -20,14 +20,14 @@ const tablist = [
       inactive: 'icon-duoren'
     }
   },
-  {
-    name: '消息',
-    path: '/message',
-    icon: {
-      active: 'icon-shouye-copy',
-      inactive: 'icon-shouye'
-    }
-  },
+  // {
+  //   name: '消息',
+  //   path: '/message',
+  //   icon: {
+  //     active: 'icon-shouye-copy',
+  //     inactive: 'icon-shouye'
+  //   }
+  // },
   {
     name: '去旅行',
     path: '/trip',

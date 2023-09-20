@@ -17,6 +17,8 @@ const onClick = () => {
       console.log(res)
       if (res.code == 1) {
         localStorage.setItem('token', res.data.token)
+        localStorage.setItem('phone', res.data.phone)
+        localStorage.setItem('id', res.data.id)
         router.replace('/')
       }
     })
@@ -28,7 +30,9 @@ const onClick = () => {
 
 <template>
   <div class="container">
-    <img class="avatar" src="https://avatars.githubusercontent.com/u/16703019?v=4" alt="" />
+    <svg class="icon avatar" aria-hidden="true">
+      <use xlink:href="#icon-touxiang"></use>
+    </svg>
     <div class="info">
       <van-cell-group inset class="info-group">
         <van-field v-model="phone" input-align="center" clearable required placeholder="输入手机号码" />
@@ -76,6 +80,7 @@ const onClick = () => {
   margin-top: 60px;
   margin-bottom: 40px;
   width: 120px;
+  height: 120px;
   border-radius: 100%;
   border: 1px solid rgb(220, 220, 220);
 }

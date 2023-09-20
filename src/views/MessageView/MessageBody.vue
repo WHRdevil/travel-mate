@@ -3,7 +3,7 @@ import { onMounted, reactive, ref } from 'vue'
 const title = ref('title')
 const content = ref('')
 const onClickLeft = () => history.back()
-let ws = {}
+// let ws = {}
 
 const themeVars = reactive({
   fontBold: '500',
@@ -11,22 +11,22 @@ const themeVars = reactive({
   borderWidth: '0'
 })
 
-onMounted(() => {
-  ws = new WebSocket('ws://localhost:8891')
-  ws.onopen = () => {
-    console.log('connection success')
-  }
+// onMounted(() => {
+//   ws = new WebSocket('ws://localhost:8891')
+//   ws.onopen = () => {
+//     console.log('connection success')
+//   }
 
-  ws.onmessage = () => {}
-})
+//   ws.onmessage = () => {}
+// })
 
-const onClick = () => {
-  ws.send(
-    JSON.stringify({
-      content: content.value
-    })
-  )
-}
+// const onClick = () => {
+//   ws.send(
+//     JSON.stringify({
+//       content: content.value
+//     })
+//   )
+// }
 </script>
 <template>
   <van-sticky>
@@ -60,7 +60,7 @@ const onClick = () => {
         <use xlink:href="#icon-jiahao"></use>
       </svg>
     </div>
-    <van-button class="submit" type="primary" @click="onClick" v-else>发送</van-button>
+    <van-button class="submit" type="primary" v-else>发送</van-button>
   </div>
 </template>
 

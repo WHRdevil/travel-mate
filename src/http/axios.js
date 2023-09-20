@@ -1,8 +1,9 @@
 import axios from 'axios'
+import { BASE_URL } from '../utils/utils'
 
 const serviceAxios = axios.create({
-  baseURL: '/api',
-  timeout: 10000,
+  baseURL: BASE_URL,
+  timeout: 10000
 })
 
 serviceAxios.interceptors.request.use(
@@ -19,7 +20,7 @@ serviceAxios.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error)
-  },
+  }
 )
 
 serviceAxios.interceptors.response.use(
@@ -77,7 +78,7 @@ serviceAxios.interceptors.response.use(
       }
     }
     return Promise.reject(message)
-  },
+  }
 )
 
 export default serviceAxios

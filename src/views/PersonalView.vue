@@ -50,7 +50,7 @@ const followUser = () => {
       <van-nav-bar left-arrow @click-left="onClickLeft" />
     </van-config-provider>
   </van-sticky>
-  <van-image :src="userInfo.pic.indexOf('http') == -1 ? BASE_URL + '/' + userInfo.pic : userInfo.pic" fit="cover" />
+  <van-image v-if="userInfo.pic" :src="userInfo.pic.indexOf('http') == -1 ? BASE_URL + '/' + userInfo.pic : userInfo.pic" fit="cover" />
   <div class="box">
     <span class="name">{{ userInfo.account }}</span>
     <div class="affect">

@@ -27,7 +27,7 @@ const onClick = (index) => {
 }
 
 const onSubmit = () => {
-  router.push({ name: 'plan' })
+  router.push({ name: 'publish' })
 }
 
 const tablist = [

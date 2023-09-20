@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { getUserInfoById } from '../http/api/userApi'
+import { BASE_URL } from '../utils/utils'
 
 const props = defineProps({
   comment: Object
@@ -21,7 +22,7 @@ onMounted(() => {
 <template>
   <div v-if="userInfo.pic" class="comment-card">
     <div class="avatar">
-      <van-image :src="userInfo.pic.indexOf('http') == -1 ? BASE_URL + '/' + userInfo.pic : userInfo.pic" />
+      <img :src="userInfo.pic.indexOf('http') == -1 ? BASE_URL + '/' + userInfo.pic : userInfo.pic" />
     </div>
     <div class="body">
       <div class="name">
@@ -47,10 +48,13 @@ onMounted(() => {
 .avatar {
   width: 40px;
   height: 40px;
+  margin-right: 10px;
 }
 
 .avatar img {
   border-radius: 100%;
+  width: 40px;
+  height: 40px;
 }
 
 .body .name {

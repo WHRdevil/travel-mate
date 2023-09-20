@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getUserInfo } from '../http/api/userApi'
+import { BASE_URL } from '../utils/utils'
 
 const content = [
   {
@@ -70,7 +71,11 @@ onMounted(() => {
     <div class="center">
       <div class="row1">
         <RouterLink class="icon avatar" :to="{ name: 'personal', query: { id: userInfo.admin_id } }">
-          <img v-if="userInfo.pic" :src="userInfo.pic" alt="" />
+          <img
+            v-if="userInfo.pic"
+            :src="userInfo.pic.indexOf('http') == -1 ? BASE_URL + '/' + userInfo.pic : userInfo.pic"
+            alt=""
+          />
           <svg v-else>
             <use xlink:href="#icon-touxiang"></use>
           </svg>

@@ -2,7 +2,10 @@
 import { reactive, ref } from 'vue'
 import { uploadImage } from '../http/api/staticApi'
 import { uploadPost } from '../http/api/postApi'
+import { showToast } from 'vant'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const onClickLeft = () => history.back()
 
 const postInfo = reactive({
@@ -71,6 +74,9 @@ const onSubmit = () => {
   console.log(postInfo)
   uploadPost(postInfo).then((value) => {
     console.log(value)
+    if (value.code == 1) {
+      router.replace({ name: 'showplan', query: { id: value.data.id } })
+    }
   })
 }
 </script>

@@ -6,14 +6,13 @@ import { BASE_URL } from '../utils/utils'
 
 defineProps(['post'])
 
-const text = ref('乌鲁木齐出发，自驾北疆环线，自驾北疆环线，自驾北疆环线，自驾北疆环线，自驾北疆环线，自驾北疆环线，')
 </script>
 
 <template>
   <div class="post-card" v-if="post.user">
     <div class="post-head">
       <div class="avatar">
-        <img src="https://avatars.githubusercontent.com/u/16703019?v=4" alt="" />
+        <img :src="post.user.pic.indexOf('http') == -1 ? BASE_URL + '/' + post.user.pic : post.user.pic" alt="" />
       </div>
       <div class="user-info">
         <span class="name">{{ post.user.account }}</span>

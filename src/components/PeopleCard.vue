@@ -2,6 +2,7 @@
 import UserTag from './UserTag.vue'
 import UserPlan from './UserPlan.vue'
 import { timeAgo, getAge } from '../utils/utils'
+import { BASE_URL } from '../utils/utils';
 
 defineProps(['account', 'create_time', 'sex', 'home', 'pic', 'birthday'])
 </script>
@@ -10,7 +11,7 @@ defineProps(['account', 'create_time', 'sex', 'home', 'pic', 'birthday'])
   <div>
     <div class="people-card">
       <div class="user-avatar">
-        <img :src="pic" alt="" />
+        <img :src="pic.indexOf('http') == -1 ? BASE_URL + '/' + pic : pic" alt="" />
       </div>
       <div class="user-info">
         <div class="info-head">

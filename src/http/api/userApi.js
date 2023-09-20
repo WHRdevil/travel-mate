@@ -30,3 +30,11 @@ export const followById = (id) => {
     }
   })
 }
+
+export const updateUserInfo = (data) => {
+  return serviceAxios({
+    url: '/user/update',
+    method: 'post',
+    data,
+  })
+}

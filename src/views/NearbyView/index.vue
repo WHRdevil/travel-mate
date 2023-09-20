@@ -15,11 +15,11 @@ const tablist = [
   {
     name: '附近人',
     path: 'people'
-  },
-  {
-    name: '动态',
-    path: 'dynamic'
   }
+  // {
+  //   name: '动态',
+  //   path: 'dynamic'
+  // }
 ]
 
 const typeComponent = {
@@ -38,11 +38,13 @@ const typeComponent = {
         </svg>
       </div>
     </template>
-    <van-tab v-for="item in tablist" :title="item.name" replace :to="{ name: item.path }">
-      <div class="container">
-        <component :is="typeComponent[item.path]"></component>
-      </div>
-    </van-tab>
+    <div class="body">
+      <van-tab v-for="item in tablist" :title="item.name" replace :to="{ name: item.path }">
+        <div class="container">
+          <component :is="typeComponent[item.path]"></component>
+        </div>
+      </van-tab>
+    </div>
   </van-tabs>
   <van-action-sheet v-model:show="show" title="筛选">
     <div class="filter-panel">
@@ -91,7 +93,6 @@ const typeComponent = {
 </template>
 
 <style scoped>
-
 .right-btn {
   align-self: center;
   flex-grow: 1;
@@ -144,5 +145,9 @@ const typeComponent = {
   background-color: red;
   color: white;
   padding: 10px 20px;
+}
+
+.body {
+  margin-bottom: 50px;
 }
 </style>

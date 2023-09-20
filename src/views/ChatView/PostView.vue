@@ -7,7 +7,7 @@ defineProps(['posts'])
 
 <template>
   <div class="post-view">
-    <RouterLink v-for="post in posts" :to="{}">
+    <RouterLink v-for="post in posts" :to="{ name: 'showplan', query: { id: post.backpacking_id } }">
       <PostCard :post="post" />
     </RouterLink>
   </div>

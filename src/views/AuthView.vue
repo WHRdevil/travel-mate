@@ -59,7 +59,7 @@ const onClick = () => {
           登录
         </van-button>
         <div class="foot">
-          <span class="forget"> 忘记密码 </span>
+          <span class="forget"> </span>
           <span class="register">
             <RouterLink :to="{ name: 'register' }">注册账号</RouterLink>
           </span>

@@ -3,6 +3,9 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { uploadImage } from '../http/api/staticApi'
 import { register } from '../http/api/authApi'
+import { showToast } from 'vant'
+import 'vant/es/toast/style'
+import { BASE_URL } from '../utils/utils'
 
 const onClickLeft = () => history.back()
 
@@ -54,8 +57,14 @@ const errMessage = ref('')
 const onSubmit = () => {
   let data = JSON.parse(JSON.stringify(userInfo.value))
   console.log(data)
+  for (let i in data) {
+    if (data[i] == '') {
+      showToast('有信息尚未填写')
+      return
+    }
+  }
   if (data.password != data.repassword) {
-    // errMessage.value = '两次输入的密码不一致'
+    showToast('两次输入的密码不一致')
   } else {
     register(data).then((value) => {
       console.log(value)
@@ -63,6 +72,7 @@ const onSubmit = () => {
         localStorage.setItem('token', value.data.token)
         localStorage.setItem('phone', value.data.phone)
         localStorage.setItem('id', value.data.id)
+        showToast('注册成功')
         router.replace('/')
       }
     })
@@ -90,7 +100,7 @@ const comparePassword = () => {
         <use xlink:href="#icon-xiangji-copy"></use>
       </svg> -->
       <van-uploader :after-read="afterRead" v-if="userInfo.pic == ''" />
-      <img v-else :src="userInfo.pic" alt="" />
+      <img v-else :src="userInfo.pic.indexOf('http') == -1 ? BASE_URL + '/' + userInfo.pic : userInfo.pic" alt="" />
     </div>
     <van-cell-group inset>
       <van-field

@@ -7,6 +7,7 @@ import { BASE_URL } from '../utils/utils'
 import CommentCard from '../components/CommentCard.vue'
 import { createComment, getCommentList } from '../http/api/commentApi'
 import { showToast } from 'vant'
+import 'vant/es/toast/style'
 
 const onClickLeft = () => history.back()
 const route = useRoute()
@@ -51,6 +52,7 @@ const onClick = () => {
   }).then((value) => {
     console.log(value)
     if (value.code == 1) {
+      showToast('发送成功')
       location.reload()
     }
   })
@@ -76,6 +78,7 @@ const onClick = () => {
       </van-config-provider>
     </van-sticky>
     <van-image
+      v-if="JSON.parse(postInfo.pic).length != 0"
       width="100%"
       height="460px"
       :src="
@@ -135,9 +138,9 @@ const onClick = () => {
     </div>
     <div class="foot">
       <input type="text" v-model="comment" placeholder="约伴出行，总会遇见" />
-      <svg class="icon" aria-hidden="true">
+      <!-- <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-aixin"></use>
-      </svg>
+      </svg> -->
       <van-button type="primary" round @click="onClick">发送</van-button>
     </div>
   </div>

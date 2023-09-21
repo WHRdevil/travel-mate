@@ -5,6 +5,7 @@ import { getUserInfoById } from '../http/api/userApi'
 import { getAge } from '../utils/utils'
 import { followById } from '../http/api/userApi'
 import { showToast } from 'vant'
+import 'vant/es/toast/style'
 import { BASE_URL } from '../utils/utils'
 
 const onClickLeft = () => history.back()

@@ -3,6 +3,7 @@ import { reactive, ref } from 'vue'
 import { uploadImage } from '../http/api/staticApi'
 import { uploadPost } from '../http/api/postApi'
 import { showToast } from 'vant'
+import 'vant/es/toast/style'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -72,9 +73,14 @@ const fileList = ref([])
 
 const onSubmit = () => {
   console.log(postInfo)
+  if (postInfo.value.pic.length == 0) {
+    showToast('请上传图片')
+    return
+  }
   uploadPost(postInfo).then((value) => {
     console.log(value)
     if (value.code == 1) {
+      showToast('发布成功')
       router.replace({ name: 'showplan', query: { id: value.data.id } })
     }
   })

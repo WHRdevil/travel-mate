@@ -24,4 +24,4 @@ export const getAge = (birthTimestamp) => {
   return age
 }
 
-export const BASE_URL = 'http://localhost:8890'
+export const BASE_URL = 'http://u.ronki.moe:8890'

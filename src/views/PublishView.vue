@@ -73,9 +73,16 @@ const fileList = ref([])
 
 const onSubmit = () => {
   console.log(postInfo)
-  if (postInfo.value.pic.length == 0) {
+  const info = JSON.parse(JSON.stringify(postInfo))
+  if (info.pic.length == 0) {
     showToast('请上传图片')
     return
+  }
+  for (let i in info) {
+    if (info[i] == '') {
+      showToast('请填写信息')
+      return
+    }
   }
   uploadPost(postInfo).then((value) => {
     console.log(value)
